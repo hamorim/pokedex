@@ -20,9 +20,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn(inter.className, "antialiased")}>
-        <div className="flex min-h-screen w-full flex-col">
+        <div className="flex min-h-screen w-full flex-col bg-muted/60">
           <Header/>
-          <main className="bg-muted/40 p-6 h-screen">
+          <main className="p-6 max-w-[1800px] mx-auto">
             {children}
           </main>
         </div>
