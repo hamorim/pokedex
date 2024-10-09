@@ -16,12 +16,6 @@ export default function Navigation() {
       >
         MyDex
       </Link>
-      <Link
-        href="#"
-        className="text-foreground transition-colors hover:text-foreground"
-      >
-        Settings
-      </Link>
     </>
   );
 }
