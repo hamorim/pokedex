@@ -1,6 +1,8 @@
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
 import { usePokemon, useSpecie } from "@/hooks/usePokemons";
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 
 const colors: { [key: string]: string } = {
@@ -38,10 +40,10 @@ export default async function Page({ params }: { params: { id: string } }) {
             width={280}
             height={280}
           />
-          <div className="w-[200px] h-[200px] dark:bg-slate-800 bg-slate-200/60 rounded-full absolute inset-0 -z-10"></div>
+          <div className="size-[200px] dark:bg-slate-800 bg-slate-200/60 rounded-full absolute inset-0 -z-10"></div>
         </div>
         <div className="flex flex-col gap-4 max-w-prose">
-          <h1 className="text-2xl capitalize font-semibold tracking-tight">
+          <h1 className="text-4xl capitalize font-semibold tracking-tight">
             {pokemon.name}
           </h1>
           <p>{about}</p>
@@ -54,6 +56,27 @@ export default async function Page({ params }: { params: { id: string } }) {
               >
                 {type}
               </Badge>
+            ))}
+          </div>
+          <div>
+            {pokemon.stats.map((stat) => (
+              <div
+                className="flex flex-col gap-1 justify-between"
+                key={stat.name}
+              >
+                <div className="flex justify-between">
+                  <p className="capitalize font-medium">{stat.name}</p>
+                  <p className="text-slate-700 dark:text-slate-300">{stat.value}</p>
+                </div>
+                <Progress
+                  value={stat.value}
+                  className={cn("h-4 mb-4", {
+                    "[&>*]:bg-red-500/80": stat.value > 0,
+                    "[&>*]:bg-orange-500/80": stat.value > 45,
+                    "[&>*]:bg-green-500/80": stat.value > 70,
+                  })}
+                />
+              </div>
             ))}
           </div>
         </div>
