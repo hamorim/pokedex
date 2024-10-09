@@ -14,7 +14,7 @@ export default function Navigation() {
         href="#"
         className="text-muted-foreground transition-colors hover:text-foreground"
       >
-        MyDex
+        Pokédex
       </Link>
     </>
   );
