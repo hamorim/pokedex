@@ -5,7 +5,7 @@ export default function Navigation() {
   return (
     <>
       <Link
-        href="#"
+        href="/"
         className="text-muted-foreground transition-colors hover:text-foreground"
       >
         Pokémons
