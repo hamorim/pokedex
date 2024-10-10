@@ -1,13 +1,19 @@
 "use client";
 
-import { useAtom } from "jotai";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useRouter, usePathname } from "next/navigation";
+import dynamic from "next/dynamic";
+import { useRouter } from "next/navigation";
 import { CardPokemon } from "@/types";
 import { Card } from "@/components/ui/card";
-import { isCatchedAtom } from "@/store/pokedex";
-import Pokeball from '@/assets/pokeball.svg'
+import { Skeleton } from "@/components/ui/skeleton";
+
+const Pokeball = dynamic(() => import("@/components/pokeball"), {
+  ssr: false,
+  loading: () => (
+    <Skeleton className="size-[36px] rounded-full absolute top-2 right-2" />
+  ),
+});
 
 const MotionCard = motion.create(Card);
 
@@ -17,10 +23,7 @@ type Props = {
 
 export default function PokemonCard({ pokemon }: Props) {
   const router = useRouter();
-  const pathname = usePathname();
-  const [isCatched] = useAtom(isCatchedAtom);
   const { id, name, url, image } = pokemon;
-  const showPokeball = isCatched(id) && pathname !== '/pokedex'; 
   return (
     <MotionCard
       key={url}
@@ -34,7 +37,7 @@ export default function PokemonCard({ pokemon }: Props) {
         <div className="w-[180px] h-[180px] dark:bg-slate-800 bg-slate-200/60 rounded-full absolute inset-0 -z-10"></div>
       </div>
       <h1 className="text-xl capitalize font-medium">{name}</h1>
-      {showPokeball ? <Image src={Pokeball} width={36} height={36} alt="Pokeball" className="absolute top-2 right-2"/> : null}
+      <Pokeball id={id} />
     </MotionCard>
   );
 }
