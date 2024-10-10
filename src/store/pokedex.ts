@@ -1,17 +1,14 @@
-import { CardPokemon } from "@/types";
 import { atom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
+import { CardPokemon } from "@/types";
 
-type Pokedex = Array<CardPokemon>;
+const initialState: Array<CardPokemon> = [];
 
-export const pokedexAtom = atomWithStorage<Pokedex>("pokedex", [], undefined, {
+export const pokedexAtom = atomWithStorage("pokedex", initialState, undefined, {
   getOnInit: true,
 });
 
-export const isCatchedAtom = atom(
-  (get) => (value: number) => {
-    const pokemons = get(pokedexAtom);
-    return pokemons.find(({id})=> id === value);
-  }
-);
-
+export const hasPokemonAtom = atom((get) => (value: number) => {
+  const pokemons = get(pokedexAtom);
+  return pokemons.find(({ id }) => id === value);
+});

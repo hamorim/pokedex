@@ -11,17 +11,20 @@ type Props = {
   pokemon: CardPokemon;
 };
 
-export default function CatchButton({ pokemon }: Props) {
-  const [catched, setCatched] = useState(false);
+export default function CatchButton({
+  pokemon,
+  ...props
+}: Props & React.HTMLAttributes<HTMLDivElement>) {
+  const [isCatching, setIsCatching] = useState(false);
   const setPokedex = useSetAtom(pokedexAtom);
   const catchPokemon = () => {
     setPokedex((value) => [...value, { ...pokemon }]);
-    setCatched(true);
+    setIsCatching(true);
   };
   return (
-    <>
-      {catched && <Confetti mode="boom" particleCount={200}/>}
+    <div {...props}>
+      {isCatching && <Confetti mode="boom" particleCount={200} />}
       <Button onClick={catchPokemon}>Catch</Button>
-    </>
+    </div>
   );
 }

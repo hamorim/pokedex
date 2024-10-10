@@ -32,21 +32,19 @@ export default async function Page({ params }: { params: { id: string } }) {
   const { about } = await useSpecie(params.id);
 
   return (
-    <Card className="p-12">
-      <div className="flex">
-        <div>
-          <div className="relative z-20">
-            <Image
-              src={pokemon.image}
-              alt={pokemon.name}
-              width={280}
-              height={280}
-            />
-            <div className="size-[200px] dark:bg-slate-800 bg-slate-200/60 rounded-full absolute inset-0 -z-10"></div>
-          </div>
-          <CatchButton pokemon={pokemon}/>
+    <Card className="px-4 py-8 md:p-8">
+      <div className="grid md:grid-cols-3 md:grid-rows-2 max-w-4xl">
+        <div className="relative z-20 col-span-2 md:col-span-1">
+          <Image
+            src={pokemon.image}
+            alt={pokemon.name}
+            width={280}
+            height={280}
+          />
+          <div className="size-[200px] dark:bg-slate-800 bg-slate-200/60 rounded-full absolute inset-0 -z-10"></div>
         </div>
-        <div className="flex flex-col gap-4 max-w-prose">
+        
+        <div className="flex flex-col gap-4 max-w-prose row-span-2 col-span-2">
           <h1 className="text-4xl capitalize font-semibold tracking-tight">
             {pokemon.name}
           </h1>
@@ -86,6 +84,7 @@ export default async function Page({ params }: { params: { id: string } }) {
             ))}
           </div>
         </div>
+        <CatchButton pokemon={pokemon} className="mt-4" />
       </div>
     </Card>
   );

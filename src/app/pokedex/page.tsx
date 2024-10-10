@@ -1,17 +1,27 @@
-"use client";
+import { Skeleton } from "@/components/ui/skeleton";
+import dynamic from "next/dynamic";
 
-import PokemonCard from "@/components/pokemon-card";
-import { pokedexAtom } from "@/store/pokedex";
-import { useAtomValue } from "jotai";
+const Pokedex = dynamic(() => import("@/components/pokedex"), {
+  ssr: false,
+  loading: () => (
+    <>
+      <Skeleton className="w-[281px] h-[300px]" />
+      <Skeleton className="w-[281px] h-[300px]" />
+      <Skeleton className="w-[281px] h-[300px]" />
+      <Skeleton className="w-[281px] h-[300px]" />
+    </>
+  ),
+});
 
 export default function Page() {
-  const pokedex = useAtomValue(pokedexAtom);
-
   return (
-    <div className="flex items-center flex-wrap gap-6">
-      {pokedex.map((pokemon) => (
-        <PokemonCard key={pokemon.url} pokemon={pokemon} />
-      ))}
+    <div className="flex flex-col items-start">
+      <h1 className="text-2xl font-bold tracking-tighter mb-6 text-slate-700">
+        My Pokédex
+      </h1>
+      <section className="w-full flex flex-wrap gap-6">
+        <Pokedex />
+      </section>
     </div>
   );
 }
