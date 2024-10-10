@@ -10,4 +10,6 @@ type Pokemon = {
   types: string[];
 };
 
-export type { Pokemon };
+type CardPokemon = Pick<Pokemon, "id" | "name" | "image" | "url">;
+
+export type { Pokemon, CardPokemon };

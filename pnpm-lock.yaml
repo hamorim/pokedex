@@ -35,6 +35,9 @@ dependencies:
   framer-motion:
     specifier: ^11.11.4
     version: 11.11.4(react-dom@18.3.1)(react@18.3.1)
+  jotai:
+    specifier: ^2.10.0
+    version: 2.10.0(@types/react@18.3.11)(react@18.3.1)
   lucide-react:
     specifier: ^0.451.0
     version: 0.451.0(react@18.3.1)
@@ -47,6 +50,9 @@ dependencies:
   react:
     specifier: ^18
     version: 18.3.1
+  react-confetti-boom:
+    specifier: ^1.0.0
+    version: 1.0.0(react-dom@18.3.1)(react@18.3.1)
   react-dom:
     specifier: ^18
     version: 18.3.1(react@18.3.1)
@@ -2476,6 +2482,22 @@ packages:
     resolution: {integrity: sha512-2yTgeWTWzMWkHu6Jp9NKgePDaYHbntiwvYuuJLbbN9vl7DC9DvXKOB2BC3ZZ92D3cvV/aflH0osDfwpHepQ53w==}
     hasBin: true
 
+  /jotai@2.10.0(@types/react@18.3.11)(react@18.3.1):
+    resolution: {integrity: sha512-8W4u0aRlOIwGlLQ0sqfl/c6+eExl5D8lZgAUolirZLktyaj4WnxO/8a0HEPmtriQAB6X5LMhXzZVmw02X0P0qQ==}
+    engines: {node: '>=12.20.0'}
+    peerDependencies:
+      '@types/react': '>=17.0.0'
+      react: '>=17.0.0'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      react:
+        optional: true
+    dependencies:
+      '@types/react': 18.3.11
+      react: 18.3.1
+    dev: false
+
   /js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
 
@@ -2937,6 +2959,17 @@ packages:
 
   /queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
+
+  /react-confetti-boom@1.0.0(react-dom@18.3.1)(react@18.3.1):
+    resolution: {integrity: sha512-JPCs1tx36xduFdMORaRLLvFJABAQUgjEqKvqZiBZr8bUkHsCzbHeesnfQwZU1LExmGiYVFGIJS/tiR4OUTktww==}
+    engines: {node: '>=16.0.0'}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+    dependencies:
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+    dev: false
 
   /react-dom@18.3.1(react@18.3.1):
     resolution: {integrity: sha512-5m4nQKp+rZRb09LNH59GM4BxTh9251/ylbKIbpe7TpGxfJ+9kv6BLkLBXIjjspbgbnIBNqlI23tRnTWT0snUIw==}

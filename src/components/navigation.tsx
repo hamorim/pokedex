@@ -11,7 +11,7 @@ export default function Navigation() {
         Pokémons
       </Link>
       <Link
-        href="#"
+        href="/pokedex"
         className="text-muted-foreground transition-colors hover:text-foreground"
       >
         Pokédex

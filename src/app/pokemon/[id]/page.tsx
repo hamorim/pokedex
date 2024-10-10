@@ -1,3 +1,4 @@
+import CatchButton from "@/components/catch-button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
@@ -33,14 +34,17 @@ export default async function Page({ params }: { params: { id: string } }) {
   return (
     <Card className="p-12">
       <div className="flex">
-        <div className="relative z-20">
-          <Image
-            src={pokemon.image}
-            alt={pokemon.name}
-            width={280}
-            height={280}
-          />
-          <div className="size-[200px] dark:bg-slate-800 bg-slate-200/60 rounded-full absolute inset-0 -z-10"></div>
+        <div>
+          <div className="relative z-20">
+            <Image
+              src={pokemon.image}
+              alt={pokemon.name}
+              width={280}
+              height={280}
+            />
+            <div className="size-[200px] dark:bg-slate-800 bg-slate-200/60 rounded-full absolute inset-0 -z-10"></div>
+          </div>
+          <CatchButton pokemon={pokemon}/>
         </div>
         <div className="flex flex-col gap-4 max-w-prose">
           <h1 className="text-4xl capitalize font-semibold tracking-tight">
@@ -66,7 +70,9 @@ export default async function Page({ params }: { params: { id: string } }) {
               >
                 <div className="flex justify-between">
                   <p className="capitalize font-medium">{stat.name}</p>
-                  <p className="text-slate-700 dark:text-slate-300">{stat.value}</p>
+                  <p className="text-slate-700 dark:text-slate-300">
+                    {stat.value}
+                  </p>
                 </div>
                 <Progress
                   value={stat.value}

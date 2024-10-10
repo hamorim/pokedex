@@ -1,8 +1,7 @@
 import { usePokemons } from "@/hooks/usePokemons";
-
 import PokemonCard from "@/components/pokemon-card";
 
-export default async function Home() {
+export default async function Page() {
   const { pokemons } = await usePokemons();
 
   return (
