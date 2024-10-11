@@ -16,10 +16,10 @@ const Pokedex = dynamic(() => import("@/components/pokedex"), {
 export default function Page() {
   return (
     <div className="flex flex-col items-start">
-      <h1 className="text-2xl font-bold tracking-tighter mb-6 text-slate-700">
+      <h1 className="text-2xl font-bold tracking-tighter mb-6 text-slate-700 dark:text-slate-300">
         My Pokédex
       </h1>
-      <section className="w-full flex flex-wrap gap-6">
+      <section className="flex flex-wrap gap-6">
         <Pokedex />
       </section>
     </div>
