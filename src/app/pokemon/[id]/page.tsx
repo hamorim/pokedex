@@ -53,7 +53,6 @@ export default async function Page({ params }: Props) {
   const { pokemon } = await getPokemon(params.id);
   const { about } = await useSpecie(params.id);
 
-
   return (
     <Card className="px-4 py-8 md:p-8">
       <div className="grid md:grid-cols-3 md:grid-rows-2 max-w-4xl">

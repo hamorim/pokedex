@@ -13,13 +13,14 @@ const Pokedex = dynamic(() => import("@/components/pokedex"), {
   ),
 });
 
-export default function Page() {
+export default async function Page() {
+  await new Promise(r => setTimeout(r, 5000));
   return (
     <div className="flex flex-col items-start">
       <h1 className="text-2xl font-bold tracking-tighter mb-6 text-slate-700 dark:text-slate-300">
         My Pokédex
       </h1>
-      <section className="flex flex-wrap gap-6">
+      <section className="flex flex-wrap gap-6 justify-center md:justify-start">
         <Pokedex />
       </section>
     </div>

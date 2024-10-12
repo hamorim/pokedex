@@ -21,9 +21,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={cn(inter.className, "antialiased")}>
         <Providers>
-          <div className="flex min-h-screen w-[100vdw] flex-col bg-muted/20">
+          <div className="min-w-[100dvw] h-screen bg-muted/20">
             <Header />
-            <main className="p-6 max-w-[1400px] mx-auto">{children}</main>
+            <main className="p-6 max-w-md md:max-w-7xl mx-auto">{children}</main>
           </div>
         </Providers>
       </body>
