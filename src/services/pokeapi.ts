@@ -1,4 +1,4 @@
-import { type Pokemon } from "@/types";
+import { Pokemon } from "@/types";
 
 const assestMap = new Map();
 
@@ -18,19 +18,7 @@ function assestUrl(url: string): string {
   return assestUrl;
 }
 
-export async function usePokemons(): Promise<{ pokemons: Pokemon[] }> {
-  const API_URL = "https://pokeapi.co/api/v2/pokemon?limit=151&offset=0";
-  const response = await fetch(API_URL);
-  const data = await response.json();
-  const pokemons = data.results.map((item: Pokemon, index: number) => ({
-    ...item,
-    image: assestUrl(item.url),
-    id: index + 1,
-  }));
-  return { pokemons };
-}
-
-export async function usePokemon(id: string): Promise<{ pokemon: Pokemon }> {
+export async function getPokemon(id: string): Promise<{ pokemon: Pokemon }> {
   const API_URL = `https://pokeapi.co/api/v2/pokemon/${id}/`;
   const response = await fetch(API_URL);
   const data = await response.json();
@@ -47,15 +35,4 @@ export async function usePokemon(id: string): Promise<{ pokemon: Pokemon }> {
     types: data.types.map((item: { type: { name: string } }) => item.type.name),
   } as Pokemon;
   return { pokemon };
-}
-
-export async function useSpecie(id: string): Promise<{ about: string }> {
-  const API_URL = `https://pokeapi.co/api/v2/pokemon-species/${id}/`;
-  const response = await fetch(API_URL);
-  const data = await response.json();
-  const result = data.flavor_text_entries.find(
-    (data: { language: { name: string }; version: { name: string } }) =>
-      data.language.name === "en" && data.version.name === "red"
-  );
-  return { about: result.flavor_text };
 }

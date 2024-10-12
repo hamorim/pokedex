@@ -13,7 +13,7 @@ export default async function Page() {
         </h1>
         <Filters/>
       </div>
-      <div className="flex flex-wrap gap-6">
+      <div className="flex flex-wrap gap-6 justify-center md:justify-start">
         <PokemonList data={pokemons}/>
       </div>
     </div>

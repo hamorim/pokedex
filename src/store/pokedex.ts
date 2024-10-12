@@ -2,7 +2,7 @@ import { atom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
 import { CardPokemon } from "@/types";
 
-const initialState: Array<CardPokemon> = [];
+const initialState: Array<CardPokemon & { catched: number }> = [];
 
 export const pokedexAtom = atomWithStorage("pokedex", initialState, undefined, {
   getOnInit: true,

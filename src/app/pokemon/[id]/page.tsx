@@ -1,10 +1,16 @@
-import CatchButton from "@/components/catch-button";
+import dynamic from "next/dynamic";
+import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { usePokemon, useSpecie } from "@/hooks/usePokemons";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
+import { Metadata } from "next";
+import { getPokemon } from "@/services/pokeapi";
+import { useSpecie } from "@/hooks/usePokemons";
+
+const CatchButton = dynamic(() => import("@/components/catch-button"), {
+  ssr: false
+});
 
 const colors: { [key: string]: string } = {
   bug: "#8BD674",
@@ -27,9 +33,26 @@ const colors: { [key: string]: string } = {
   water: "#58ABF6",
 };
 
-export default async function Page({ params }: { params: { id: string } }) {
-  const { pokemon } = await usePokemon(params.id);
+type Props = {
+  params: { id: string };
+};
+
+export async function generateMetadata(
+  { params }: Props
+): Promise<Metadata> {
+  const { pokemon } = await getPokemon(params.id);
+  const pokemonName = pokemon.name[0].toUpperCase() + pokemon.name.slice(1)
+  return {
+    title: `Pokedex | ${pokemonName}`,
+    description: "Guiding light on your path to Pokemon mastery",
+  }
+}
+
+
+export default async function Page({ params }: Props) {
+  const { pokemon } = await getPokemon(params.id);
   const { about } = await useSpecie(params.id);
+
 
   return (
     <Card className="px-4 py-8 md:p-8">
@@ -43,7 +66,7 @@ export default async function Page({ params }: { params: { id: string } }) {
           />
           <div className="size-[200px] dark:bg-slate-800 bg-slate-200/60 rounded-full absolute inset-0 -z-10"></div>
         </div>
-        
+
         <div className="flex flex-col gap-4 max-w-prose row-span-2 col-span-2">
           <h1 className="text-4xl capitalize font-semibold tracking-tight">
             {pokemon.name}
@@ -84,7 +107,7 @@ export default async function Page({ params }: { params: { id: string } }) {
             ))}
           </div>
         </div>
-        <CatchButton pokemon={pokemon} className="mt-4" />
+        <CatchButton pokemon={pokemon} className="col-span-2 md:col-span-1 mt-4" />
       </div>
     </Card>
   );
