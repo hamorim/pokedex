@@ -1,7 +1,5 @@
 import ExportButton from "@/components/export-button";
-import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
-import { FileDown } from "lucide-react";
 import dynamic from "next/dynamic";
 
 const Pokedex = dynamic(() => import("@/components/pokedex"), {
