@@ -14,7 +14,6 @@ const Pokedex = dynamic(() => import("@/components/pokedex"), {
 });
 
 export default async function Page() {
-  await new Promise(r => setTimeout(r, 5000));
   return (
     <div className="flex flex-col items-start">
       <h1 className="text-2xl font-bold tracking-tighter mb-6 text-slate-700 dark:text-slate-300">
