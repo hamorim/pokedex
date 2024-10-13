@@ -1,3 +1,10 @@
+import withSerwistInit from "@serwist/next";
+
+const withSerwist = withSerwistInit({
+  swSrc: "src/app/sw.ts",
+  swDest: "public/sw.js",
+});
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -7,7 +14,7 @@ const nextConfig = {
         hostname: "assets.pokemon.com",
       },
     ],
-  }
+  },
 };
 
-export default nextConfig;
+export default withSerwist(nextConfig);
