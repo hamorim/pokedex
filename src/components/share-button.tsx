@@ -2,9 +2,10 @@
 
 import { Share } from 'lucide-react'
 import { useAtomValue } from 'jotai';
-import { Button } from '@/components/ui/button'
 import { pokedexAtom } from '@/store/pokedex';
 import { useToast } from "@/hooks/use-toast"
+import { Button } from '@/components/ui/button'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { encode } from '@/lib/hash';
 
 export default function ShareButton() {
@@ -22,6 +23,13 @@ export default function ShareButton() {
   }
 
   return (
-    <Button variant='outline' className='mt-4' onClick={() => createShareLink()}><Share /></Button>
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger asChild><Button variant='outline' className='mt-4' onClick={() => createShareLink()}><Share /></Button></TooltipTrigger>
+        <TooltipContent>
+          <p>Share pokedex</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
   )
 }

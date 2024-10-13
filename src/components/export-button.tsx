@@ -1,9 +1,10 @@
 'use client'
 
 import { FileDown } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { pokedexAtom } from '@/store/pokedex';
 import { useAtomValue } from 'jotai';
+import { Button } from '@/components/ui/button'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { pokedexAtom } from '@/store/pokedex';
 
 export default function ExportButton() {
   const pokedex = useAtomValue(pokedexAtom);
@@ -18,6 +19,13 @@ export default function ExportButton() {
   }
 
   return (
-    <Button variant='outline' className='mt-4' onClick={() => exportToCsv()}><FileDown /></Button>
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger asChild><Button variant='outline' className='mt-4' onClick={() => exportToCsv()}><FileDown /></Button></TooltipTrigger>
+        <TooltipContent>
+          <p>Export CSV</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
   )
 }
