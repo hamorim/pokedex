@@ -7,12 +7,7 @@ const nextConfig = {
         hostname: "assets.pokemon.com",
       },
     ],
-  },
-  logging: {
-    fetches: {
-      fullUrl: true,
-    },
-  },
+  }
 };
 
 export default nextConfig;
