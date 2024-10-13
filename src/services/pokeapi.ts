@@ -36,3 +36,15 @@ export async function getPokemon(id: string): Promise<{ pokemon: Pokemon }> {
   } as Pokemon;
   return { pokemon };
 }
+
+export async function getPokemons(): Promise<{ pokemons: Pokemon[] }> {
+  const API_URL = "https://pokeapi.co/api/v2/pokemon?limit=151&offset=0";
+  const response = await fetch(API_URL);
+  const data = await response.json();
+  const pokemons = data.results.map((item: Pokemon, index: number) => ({
+    ...item,
+    image: assestUrl(item.url),
+    id: index + 1,
+  }));
+  return { pokemons };
+}

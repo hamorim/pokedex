@@ -1,4 +1,5 @@
 import ExportButton from "@/components/export-button";
+import ShareButton from "@/components/share-button";
 import { Skeleton } from "@/components/ui/skeleton";
 import dynamic from "next/dynamic";
 
@@ -21,7 +22,10 @@ export default async function Page() {
         <h1 className="text-2xl font-bold tracking-tighter text-slate-700 dark:text-slate-300">
           My Pokédex
         </h1>
-        <ExportButton />
+        <div className="flex gap-2">
+          <ExportButton />
+          <ShareButton />
+        </div>
       </div>
       <section className="flex flex-wrap gap-6 justify-center md:justify-start">
         <Pokedex />

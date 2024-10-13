@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import Providers from "@/components/providers";
 import Header from "@/components/header";
 import "@/app/globals.css";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,6 +25,7 @@ export default function RootLayout({
           <div className="min-w-[100dvw] h-screen bg-muted/20">
             <Header />
             <main className="p-6 max-w-md md:max-w-7xl mx-auto">{children}</main>
+            <Toaster />
           </div>
         </Providers>
       </body>
