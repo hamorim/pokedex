@@ -1,10 +1,9 @@
 'use client'
 
-import React from 'react'
-import { Button } from '@/components/ui/button'
-import { ArrowDownAZ, ArrowDownNarrowWide, ArrowDownZA } from 'lucide-react'
-import { sortAtom } from '@/store/pokemons'
 import { useAtom } from 'jotai'
+import { ArrowDownAZ, ArrowDownNarrowWide, ArrowDownZA } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { sortAtom } from '@/store/app'
 
 export default function Filters() {
   const [sort, setSort] = useAtom(sortAtom)

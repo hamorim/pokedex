@@ -3,8 +3,8 @@ import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
 import Providers from "@/components/providers";
 import Header from "@/components/header";
-import "@/app/globals.css";
 import { Toaster } from "@/components/ui/toaster";
+import "@/app/globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#FFFFFF",
+  themeColor: "#333",
 };
 
 export default function RootLayout({
