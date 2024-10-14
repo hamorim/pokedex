@@ -21,7 +21,7 @@ export default function ExportButton() {
   return (
     <TooltipProvider>
       <Tooltip>
-        <TooltipTrigger asChild><Button variant='outline' className='mt-4' onClick={() => exportToCsv()}><FileDown /></Button></TooltipTrigger>
+        <TooltipTrigger asChild><Button variant='outline' onClick={() => exportToCsv()}><FileDown /></Button></TooltipTrigger>
         <TooltipContent>
           <p>Export CSV</p>
         </TooltipContent>

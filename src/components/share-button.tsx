@@ -25,7 +25,7 @@ export default function ShareButton() {
   return (
     <TooltipProvider>
       <Tooltip>
-        <TooltipTrigger asChild><Button variant='outline' className='mt-4' onClick={() => createShareLink()}><Share /></Button></TooltipTrigger>
+        <TooltipTrigger asChild><Button variant='outline' onClick={() => createShareLink()}><Share /></Button></TooltipTrigger>
         <TooltipContent>
           <p>Share pokedex</p>
         </TooltipContent>

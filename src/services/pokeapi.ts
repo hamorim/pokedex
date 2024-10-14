@@ -48,3 +48,14 @@ export async function getPokemons(): Promise<{ pokemons: Pokemon[] }> {
   }));
   return { pokemons };
 }
+
+export async function getSpecie(id: string): Promise<{ about: string }> {
+  const API_URL = `https://pokeapi.co/api/v2/pokemon-species/${id}/`;
+  const response = await fetch(API_URL);
+  const data = await response.json();
+  const result = data.flavor_text_entries.find(
+    (data: { language: { name: string }; version: { name: string } }) =>
+      data.language.name === "en" && data.version.name === "red"
+  );
+  return { about: result.flavor_text };
+}

@@ -5,8 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
 import { Metadata } from "next";
-import { getPokemon } from "@/services/pokeapi";
-import { useSpecie } from "@/hooks/usePokemons";
+import { getPokemon, getSpecie } from "@/services/pokeapi";
 
 const CatchButton = dynamic(() => import("@/components/catch-button"), {
   ssr: false
@@ -51,7 +50,7 @@ export async function generateMetadata(
 
 export default async function Page({ params }: Props) {
   const { pokemon } = await getPokemon(params.id);
-  const { about } = await useSpecie(params.id);
+  const { about } = await getSpecie(params.id);
 
   return (
     <Card className="px-4 py-8 md:p-8">
