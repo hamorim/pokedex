@@ -24,7 +24,7 @@ export default async function Page() {
         <h1 className="text-md md:text-2xl font-bold tracking-tighter text-slate-700 dark:text-slate-300">
           My Pokédex
         </h1>
-        <div className="flex space-x-1">
+        <div className="flex space-x-1 mr-10">
           <ExportButton />
           <GraphButton />
           <ShareButton />

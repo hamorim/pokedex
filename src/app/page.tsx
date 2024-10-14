@@ -1,6 +1,6 @@
 import { getPokemons } from "@/services/pokeapi";
 import PokemonList from "@/components/pokemon-list";
-import Filters from "@/components/filters";
+import SortButton from "@/components/sort-button";
 
 export default async function Page() {
   const { pokemons } = await getPokemons();
@@ -11,9 +11,9 @@ export default async function Page() {
         <h1 className="text-2xl font-bold tracking-tighter text-slate-700 dark:text-slate-300">
           Pokémons
         </h1>
-        <Filters />
+        <SortButton />
       </div>
-      <div className="flex flex-wrap gap-6 justify-center md:justify-start">
+      <div className="flex flex-wrap gap-6 justify-center md:justify-start w-full">
         <PokemonList data={pokemons} />
       </div>
     </div>

@@ -37,8 +37,8 @@ export default function Page() {
   return (
     <div className="flex flex-col gap-6">
       <h1 className="text-2xl font-bold tracking-tighter text-slate-700 dark:text-slate-300">
-      Hey Trainer! 👋 <span className="text-slate-500">Here’s My Collection of Captured Pokémon!</span>
-        </h1>
+        Hey Trainer! 👋 <span className="text-slate-500">Here's My Collection of Captured Pokémon!</span>
+      </h1>
       <div className="flex flex-wrap gap-6 justify-center md:justify-start">
         {data.map((pokemon) => (
           <PokemonCard.Root key={pokemon.url} pokemon={pokemon} />

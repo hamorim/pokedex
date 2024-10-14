@@ -47,7 +47,6 @@ export async function generateMetadata(
   }
 }
 
-
 export default async function Page({ params }: Props) {
   const { pokemon } = await getPokemon(params.id);
   const { about } = await getSpecie(params.id);
@@ -64,13 +63,12 @@ export default async function Page({ params }: Props) {
           />
           <div className="size-[200px] dark:bg-slate-800 bg-slate-200/60 rounded-full absolute inset-0 -z-10"></div>
         </div>
-
-        <div className="flex flex-col gap-4 max-w-prose row-span-2 col-span-2">
+        <div className="flex flex-col gap-2 max-w-prose row-span-2 col-span-2">
           <h1 className="text-4xl capitalize font-semibold tracking-tight">
             {pokemon.name}
           </h1>
-          <p>{about}</p>
-          <div className="flex gap-2">
+          <p className="dark:text-slate-200/60 text-slate-800 mb-4">{about}</p>
+          <div className="flex gap-2 mb-4">
             {pokemon.types.map((type) => (
               <Badge
                 className="capitalize p-2"
@@ -105,7 +103,7 @@ export default async function Page({ params }: Props) {
             ))}
           </div>
         </div>
-        <CatchButton pokemon={pokemon} className="col-span-2 md:col-span-1 mt-4" />
+        <CatchButton pokemon={pokemon} className="col-span-2 md:col-span-1 md:mt-4" />
       </div>
     </Card>
   );

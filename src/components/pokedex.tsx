@@ -1,40 +1,24 @@
 "use client";
 
 import { useAtomValue } from "jotai";
-import { PokemonCard } from "@/components/pokemon-card";
 import { cn } from "@/lib/utils";
 import { filteredPokedexAtom } from "@/store/pokedex";
 import { layoutAtom } from "@/store/app";
+import { PokemonCard } from "@/components/pokemon-card";
+import MessageCard from "@/components/message-card";
 
-const EmptyDex = () => {
-  return (
-    <div className="w-full flex items-center justify-center rounded-lg border border-dashed shadow-sm bg-muted/60">
-      <div className="flex flex-col items-center gap-2 text-center p-48">
-        <h3 className="text-2xl font-bold tracking-tight">
-          You haven&apos;t captured any Pokémon
-        </h3>
-        <p className="text-sm text-muted-foreground">
-          Don&apos;t be shy, start capturing some Pokémons!
-        </p>
-      </div>
-    </div>
-  );
-};
+const COPY = {
+  empty: {
+    title: "You haven't captured any Pokémon",
+    description: "Don't be shy, start capturing some Pokémons!",
+  },
+  noResults: {
+    title: "We can't find any Pokémon",
+    description: "Please try again with a different filter",
+  }
+}
 
-const NoResults = () => {
-  return (
-    <div className="w-full flex items-center justify-center rounded-lg border border-dashed shadow-sm bg-muted/60">
-      <div className="flex flex-col items-center gap-2 text-center p-48">
-        <h3 className="text-2xl font-bold tracking-tight">
-          We can&apos;t find any Pokémon
-        </h3>
-        <p className="text-sm text-muted-foreground">
-          Please try again with a different filter
-        </p>
-      </div>
-    </div>
-  );
-};
+const pokemonNumber = (id: number) => `#${id.toString().padStart(3, '0')}`
 
 export default function Pokedex() {
   const { filteredData: pokedex, totals } = useAtomValue(filteredPokedexAtom);
@@ -42,8 +26,8 @@ export default function Pokedex() {
   const layoutTable = layout === 'table'
   const layoutGrid = layout === 'grid'
 
-  if (!totals) return <EmptyDex />;
-  if (totals && !pokedex.length) return <NoResults />;
+  if (!totals) return <MessageCard {...COPY.empty} />;
+  if (totals && !pokedex.length) return <MessageCard {...COPY.noResults}/>;
 
   return (
     <section className={
@@ -61,8 +45,8 @@ export default function Pokedex() {
               { "flex flex-col md:flex-row items-center md:items-center justify-between": layoutTable })
           } >
           {layoutTable &&
-            <h1 className="text-8xl md:text-[160px] text-slate-900/90">
-              {`#${pokemon.id.toString().padStart(3, '0')}`}
+            <h1 className="text-8xl md:text-[160px] dark:text-slate-900/90 text-slate-300/60">
+              {pokemonNumber(pokemon.id)}
             </h1>
           }
         </PokemonCard.Root>
