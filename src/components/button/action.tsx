@@ -13,7 +13,7 @@ type Props = {
   action: Action
 } & ButtonProps
 
-const Action = ({ action, Icon, ...props }: Props) => <Button variant='outline' {...props}><Icon /></Button>
+const Action = ({ action, Icon, ...props }: Props) => <Button variant='outline' onClick={action} {...props}><Icon /></Button>
 
 const Root = ({ children, tooltip }: PropsWithChildren<{ tooltip: string }>) => {
   return (
