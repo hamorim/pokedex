@@ -19,7 +19,7 @@ export default function PokemonList({ data }: Props) {
     <>
       {
         sortedPokemons.sortedData.map((pokemon) => (
-          <PokemonCard.Root key={pokemon.id} pokemon={pokemon}>
+          <PokemonCard.Root key={pokemon.id} pokemon={pokemon} cardClassname="flex flex-col items-center">
             <PokemonCard.Captured pokemon={pokemon} />
           </PokemonCard.Root>
         ))

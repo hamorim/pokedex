@@ -1,7 +1,8 @@
+import dynamic from "next/dynamic";
+import { Skeleton } from "@/components/ui/skeleton";
 import ExportButton from "@/components/export-button";
 import ShareButton from "@/components/share-button";
-import { Skeleton } from "@/components/ui/skeleton";
-import dynamic from "next/dynamic";
+import ViewToggle from "@/components/view-toggle";
 
 const Pokedex = dynamic(() => import("@/components/pokedex"), {
   ssr: false,
@@ -25,11 +26,10 @@ export default async function Page() {
         <div className="flex space-x-2">
           <ExportButton />
           <ShareButton />
+          <ViewToggle />
         </div>
       </div>
-      <section className="flex flex-wrap gap-6 justify-center md:justify-start">
-        <Pokedex />
-      </section>
+      <Pokedex />
     </div>
   );
 }

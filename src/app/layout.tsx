@@ -60,7 +60,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={cn(inter.className, "antialiased")}>
         <Providers>
-          <div className="min-w-[100dvw] h-screen bg-muted/20">
+          <div className="min-w-[100dvw] h-full bg-muted/20">
             <Header />
             <main className="p-6 max-w-md md:max-w-7xl mx-auto">{children}</main>
             <Toaster />

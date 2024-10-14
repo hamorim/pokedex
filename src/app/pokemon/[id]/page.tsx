@@ -54,13 +54,13 @@ export default async function Page({ params }: Props) {
 
   return (
     <Card className="px-4 py-8 md:p-8">
-      <div className="grid md:grid-cols-3 md:grid-rows-2 max-w-4xl">
+      <div className="grid md:grid-cols-3 md:grid-rows-2 max-w-4xl gap-8">
         <div className="relative z-20 col-span-2 md:col-span-1">
           <Image
             src={pokemon.image}
             alt={pokemon.name}
-            width={280}
-            height={280}
+            width={344}
+            height={344}
           />
           <div className="size-[200px] dark:bg-slate-800 bg-slate-200/60 rounded-full absolute inset-0 -z-10"></div>
         </div>

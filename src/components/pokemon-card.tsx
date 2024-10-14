@@ -15,16 +15,17 @@ const Pokeball = dynamic(() => import("@/components/pokeball"), {
 type Props = {
   pokemon: CardPokemon;
   children?: React.ReactNode;
+  cardClassname?: string;
 };
 
-function Captured({ pokemon: { id } }: Props) {
+function Captured({ pokemon: { id }}: Props) {
   return <Pokeball className="absolute top-2 right-2" pokemonId={id} />;
 }
 
-function Card({ pokemon: { id, name, image }, children }: Props) {
+function Card({ pokemon: { id, name, image }, children, cardClassname }: Props) {
   return (
     <Link href={`/pokemon/${id}`}>
-      <MotionCard>
+      <MotionCard className={cardClassname}>
         <div className="relative z-10">
           <Image src={image} alt={name} width={215} height={215} />
           <div className="w-[180px] h-[180px] dark:bg-slate-800 bg-slate-200/60 rounded-full absolute inset-0 -z-10"></div>
