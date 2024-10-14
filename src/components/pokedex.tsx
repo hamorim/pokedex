@@ -49,7 +49,7 @@ export default function Pokedex() {
     <section className={
       cn(
         { "flex flex-wrap gap-6 justify-center md:justify-start": layoutGrid },
-        { "grid gap-8 grid-cols-1": layoutTable }
+        { "grid gap-8 grid-rows-2 grid-cols-1": layoutTable }
       )}>
       {pokedex.map((pokemon) => (
         <PokemonCard.Root
@@ -58,10 +58,10 @@ export default function Pokedex() {
           cardClassname={
             cn(
               { "flex flex-col items-center": layoutGrid },
-              { "flex items-start justify-between": layoutTable })
+              { "flex flex-col md:flex-row items-center md:items-center justify-between": layoutTable })
           } >
           {layoutTable &&
-            <h1 className="text-[160px] text-slate-900/90">
+            <h1 className="text-8xl md:text-[160px] text-slate-900/90">
               {`#${pokemon.id.toString().padStart(3, '0')}`}
             </h1>
           }
