@@ -15,7 +15,7 @@ export default function ShareButton() {
   const createShareLink = () => {
     const content = pokedex.map((pokemon) => pokemon.id);
     const hash = encode(content)
-    navigator.clipboard.writeText(`http://localhost:3000/pokedex/share?code=${encodeURI(hash)}`);
+    navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_URL}/pokedex/share?code=${encodeURI(hash)}`);
     toast({
       title: "Your Pokédex link has been copied to your clipboard",
       description: "You can share with your friends and colleagues",
