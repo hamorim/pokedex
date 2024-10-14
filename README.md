@@ -10,5 +10,5 @@
 - [x] Have access to my Pokédex with limited internet connectivy or none at all
 - [ ] Have a quick overview of my progress within the Pokédex
 - [x] Manage my Pokédex according to my taste and needs
-- [ ] Alternate between different view modes
+- [x] Alternate between different view modes
 - [x] Export all Pokémons from the Pokédex to CSV
