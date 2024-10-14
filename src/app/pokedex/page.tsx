@@ -7,12 +7,12 @@ import ViewToggle from "@/components/view-toggle";
 const Pokedex = dynamic(() => import("@/components/pokedex"), {
   ssr: false,
   loading: () => (
-    <>
+    <div className="flex flex-wrap gap-6 justify-center md:justify-start">
       <Skeleton className="w-[281px] h-[300px]" />
       <Skeleton className="w-[281px] h-[300px]" />
       <Skeleton className="w-[281px] h-[300px]" />
       <Skeleton className="w-[281px] h-[300px]" />
-    </>
+    </div>
   ),
 });
 
