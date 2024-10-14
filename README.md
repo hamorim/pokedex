@@ -1,6 +1,16 @@
 # Pokedex
 
+## Getting Started
 
+First, run the development server:
+
+```bash
+pnpm install
+
+pnpm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## Requirements
 
@@ -13,3 +23,9 @@
 - [x] Manage my Pokédex according to my taste and needs
 - [x] Alternate between different view modes
 - [x] Export all Pokémons from the Pokédex to CSV
+
+## ToDo
+
+- [ ] Add notes to catched Pokémons
+- [ ] Release pokémon
+- [ ] Test coverage
