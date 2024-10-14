@@ -14,6 +14,8 @@ export const hasPokemonAtom = atom((get) => (value: number) => {
   return pokemons.find(({ id }) => id === value);
 });
 
+export const catchedPokemonsAtom = atom((get) => get(pokedexAtom).length);
+
 export const filteredPokedexAtom = atom((get) => {
   const filter = get(filterAtom);
   const data = get(pokedexAtom);

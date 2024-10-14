@@ -3,6 +3,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import ExportButton from "@/components/export-button";
 import ShareButton from "@/components/share-button";
 import ViewToggle from "@/components/view-toggle";
+import GraphButton from "@/components/graph-button";
 
 const Pokedex = dynamic(() => import("@/components/pokedex"), {
   ssr: false,
@@ -20,11 +21,12 @@ export default async function Page() {
   return (
     <div className="flex flex-col">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold tracking-tighter text-slate-700 dark:text-slate-300">
+        <h1 className="text-md md:text-2xl font-bold tracking-tighter text-slate-700 dark:text-slate-300">
           My Pokédex
         </h1>
-        <div className="flex space-x-2">
+        <div className="flex space-x-1">
           <ExportButton />
+          <GraphButton />
           <ShareButton />
           <ViewToggle />
         </div>
