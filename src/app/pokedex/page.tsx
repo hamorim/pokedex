@@ -1,10 +1,9 @@
 import dynamic from "next/dynamic";
 import { Skeleton } from "@/components/ui/skeleton";
-import ExportButton from "@/components/export-button";
-import ShareButton from "@/components/share-button";
-import ViewToggle from "@/components/view-toggle";
-import GraphButton from "@/components/graph-button";
 
+const PokedexActions = dynamic(() => import("@/components/podekex-actions"), {
+  ssr: false
+});
 const Pokedex = dynamic(() => import("@/components/pokedex"), {
   ssr: false,
   loading: () => (
@@ -24,12 +23,7 @@ export default async function Page() {
         <h1 className="text-md md:text-2xl font-bold tracking-tighter text-slate-700 dark:text-slate-300">
           My Pokédex
         </h1>
-        <div className="flex space-x-1 mr-10">
-          <ExportButton />
-          <GraphButton />
-          <ShareButton />
-          <ViewToggle />
-        </div>
+        <PokedexActions />
       </div>
       <Pokedex />
     </div>

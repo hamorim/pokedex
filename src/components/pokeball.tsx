@@ -1,14 +1,15 @@
 'use client'
 
 import Image from "next/image";
-import PokeballAsset from "@/assets/pokeball.svg";
 import { useAtom } from "jotai";
 import { hasPokemonAtom } from "@/store/pokedex";
+import PokeballAsset from "@/assets/pokeball.svg";
 
-export default function Pokeball({
-  pokemonId,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement> & { pokemonId: number }) {
+type Props = {
+  pokemonId: number
+} & React.HTMLAttributes<HTMLDivElement>
+
+export default function Pokeball({ pokemonId, ...props }: Props) {
   const [hasPokemon] = useAtom(hasPokemonAtom);
   if (!hasPokemon(pokemonId)) return null;
   return (

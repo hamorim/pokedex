@@ -2,6 +2,7 @@
 
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { Provider as JotaiProvider } from "jotai";
+import { TooltipProvider } from '@/components/ui/tooltip';
 
 export default function Providers({ children }: React.PropsWithChildren) {
   return (
@@ -11,7 +12,9 @@ export default function Providers({ children }: React.PropsWithChildren) {
       enableSystem
       disableTransitionOnChange
     >
-      <JotaiProvider>{children}</JotaiProvider>
+      <JotaiProvider>
+        <TooltipProvider>{children}</TooltipProvider>
+      </JotaiProvider>
     </NextThemesProvider>
   );
 }

@@ -1,10 +1,10 @@
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import Logo from "@/components/logo";
-import Navigation from "@/components/navigation";
-import Search from "@/components/search";
-import ThemeToggle from "@/components/theme-toggle";
+import Logo from "@/components/layout/logo";
+import Navigation from "@/components/layout/navigation";
+import Search from "@/components/layout/search";
+import ThemeToggle from "@/components/layout/theme-toggle";
 
 export default function Header() {
   return (

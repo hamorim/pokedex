@@ -1,18 +1,17 @@
 'use client'
 
-import { Share } from 'lucide-react'
 import { useAtomValue } from 'jotai';
+import { Share } from 'lucide-react'
 import { pokedexAtom } from '@/store/pokedex';
 import { useToast } from "@/hooks/use-toast"
-import { Button } from '@/components/ui/button'
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { encode } from '@/lib/hash';
+import { type Action, ActionButton } from '@/components/button/action';
 
-export default function ShareButton() {
+const useShare = (): { action: Action } => {
   const pokedex = useAtomValue(pokedexAtom);
   const { toast } = useToast()
 
-  const createShareLink = () => {
+  const action = () => {
     const content = pokedex.map((pokemon) => pokemon.id);
     const hash = encode(content)
     navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_URL}/pokedex/share?code=${encodeURI(hash)}`);
@@ -22,14 +21,14 @@ export default function ShareButton() {
     })
   }
 
+  return { action }
+}
+
+export default function ShareButton() {
+  const { action } = useShare();
   return (
-    <TooltipProvider>
-      <Tooltip>
-        <TooltipTrigger asChild><Button variant='outline' onClick={() => createShareLink()}><Share /></Button></TooltipTrigger>
-        <TooltipContent>
-          <p>Share pokedex</p>
-        </TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
+    <ActionButton.Root tooltip='Share pokedex link'>
+      <ActionButton.Action action={action} Icon={Share} />
+    </ActionButton.Root>
   )
 }

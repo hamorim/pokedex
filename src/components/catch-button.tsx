@@ -22,8 +22,8 @@ export default function CatchButton({
   const [isCatching, setIsCatching] = useState(false);
   const setPokedex = useSetAtom(pokedexAtom);
   const [hasPokemon] = useAtom(hasPokemonAtom);
-  const myPokemon = hasPokemon(pokemon.id);
-  const catchedOn = myPokemon ? new Date(myPokemon.catched).toLocaleString('en-US', {
+  const pokedexPokemon = hasPokemon(pokemon.id);
+  const catchedOn = pokedexPokemon ? new Date(pokedexPokemon.catched).toLocaleString('en-US', {
     dateStyle: 'full',
   }) : ''
 
@@ -32,17 +32,16 @@ export default function CatchButton({
     setIsCatching(true);
   };
 
-  const component = !myPokemon ?
-    <Button onClick={catchPokemon} className="px-8 py-6 text-lg bg-blue-500 hover:bg-blue-600 transition ease-in">Catch</Button> :
-    <>
-      <Image src={PokeballAsset} width={42} height={42} alt="Pokeball" className="inline-block mr-2" />
-      <span className="w-full text-slate-600/90 dark:text-slate-300">{`on ${catchedOn}`}</span>
-    </>
-
   return (
     <div className={cn("w-full", className)} {...props}>
       {isCatching && <Confetti mode="boom" particleCount={200} />}
-      {component}
+      {!pokedexPokemon && <Button onClick={catchPokemon} className="px-8 py-6 text-lg bg-blue-500 hover:bg-blue-600 transition ease-in">Catch</Button>}
+      {pokedexPokemon && (
+        <>
+          <Image src={PokeballAsset} width={42} height={42} alt="Pokeball" className="inline-block mr-2" />
+          <span className="w-full text-slate-600/90 dark:text-slate-300">{`on ${catchedOn}`}</span>
+        </>
+      )}
     </div>
   );
 }

@@ -1,6 +1,9 @@
+import dynamic from "next/dynamic";
 import { getPokemons } from "@/services/pokeapi";
 import PokemonList from "@/components/pokemon-list";
-import SortButton from "@/components/sort-button";
+const SortButton = dynamic(() => import("@/components/button/sort"), {
+  ssr: false
+});
 
 export default async function Page() {
   const { pokemons } = await getPokemons();
