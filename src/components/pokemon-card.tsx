@@ -26,11 +26,13 @@ function Card({ pokemon: { id, name, image }, children, cardClassname }: Props) 
   return (
     <Link href={`/pokemon/${id}`}>
       <MotionCard className={cardClassname}>
-        <div className="relative z-10">
-          <Image src={image} alt={name} width={215} height={215} />
-          <div className="w-[180px] h-[180px] dark:bg-slate-800 bg-slate-200/60 rounded-full absolute inset-0 -z-10"></div>
+        <div className="flex flex-col items-center">
+          <div className="relative z-10">
+            <Image src={image} alt={name} width={215} height={215} />
+            <div className="w-[180px] h-[180px] dark:bg-slate-800 bg-slate-200/60 rounded-full absolute inset-0 -z-10"></div>
+          </div>
+          <h1 className="text-xl capitalize font-medium">{name}</h1>
         </div>
-        <h1 className="text-xl capitalize font-medium">{name}</h1>
         {children}
       </MotionCard>
     </Link>

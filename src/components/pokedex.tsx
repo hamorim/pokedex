@@ -39,13 +39,17 @@ const NoResults = () => {
 export default function Pokedex() {
   const { filteredData: pokedex, totals } = useAtomValue(filteredPokedexAtom);
   const layout = useAtomValue(layoutAtom)
+  const layoutTable = layout === 'table'
+  const layoutGrid = layout === 'grid'
+
   if (!totals) return <EmptyDex />;
   if (totals && !pokedex.length) return <NoResults />;
+
   return (
     <section className={
       cn(
-        { "flex flex-wrap gap-6 justify-center md:justify-start": layout === 'grid' },
-        { "grid gap-8 grid-cols-1 content-start": layout === 'table' }
+        { "flex flex-wrap gap-6 justify-center md:justify-start": layoutGrid },
+        { "grid gap-8 grid-cols-1": layoutTable }
       )}>
       {pokedex.map((pokemon) => (
         <PokemonCard.Root
@@ -53,9 +57,15 @@ export default function Pokedex() {
           pokemon={pokemon}
           cardClassname={
             cn(
-              { "flex flex-col items-center": layout === 'grid' },
-              { "flex items-start": layout === 'table' })
-          } />
+              { "flex flex-col items-center": layoutGrid },
+              { "flex items-start justify-between": layoutTable })
+          } >
+          {layoutTable &&
+            <h1 className="text-[160px] text-slate-900/90">
+              {`#${pokemon.id.toString().padStart(3, '0')}`}
+            </h1>
+          }
+        </PokemonCard.Root>
       ))}
     </section>
   );
