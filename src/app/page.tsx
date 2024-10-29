@@ -1,6 +1,7 @@
-import dynamic from "next/dynamic";
-import { getPokemons } from "@/services/pokeapi";
 import PokemonList from "@/components/pokemon-list";
+import { getPokemons } from "@/services/pokeapi";
+import dynamic from "next/dynamic";
+
 const SortButton = dynamic(() => import("@/components/button/sort"), {
   ssr: false
 });
