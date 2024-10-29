@@ -1,14 +1,14 @@
 "use client";
 
-import Image from "next/image";
-import Confetti from "react-confetti-boom";
-import { useState } from "react";
-import { useAtom, useSetAtom } from "jotai";
-import { cn } from "@/lib/utils";
-import { CardPokemon } from "@/types";
-import { hasPokemonAtom, pokedexAtom } from "@/store/pokedex";
-import { Button } from "@/components/ui/button";
 import PokeballAsset from "@/assets/pokeball.svg";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { hasPokemonAtom, pokedexAtom } from "@/store/pokedex";
+import { CardPokemon } from "@/types";
+import { useAtom, useSetAtom } from "jotai";
+import Image from "next/image";
+import { useState } from "react";
+import Confetti from "react-confetti-boom";
 
 type Props = {
   pokemon: CardPokemon;
@@ -38,8 +38,8 @@ export default function CatchButton({
       {!pokedexPokemon && <Button onClick={catchPokemon} className="px-8 py-6 text-lg bg-blue-500 hover:bg-blue-600 transition ease-in">Catch</Button>}
       {pokedexPokemon && (
         <>
-          <Image src={PokeballAsset} width={42} height={42} alt="Pokeball" className="inline-block mr-2" />
-          <span className="w-full text-slate-600/90 dark:text-slate-300">{`on ${catchedOn}`}</span>
+          <Image src={PokeballAsset} width={36} height={36} alt="Pokeball" className="inline-block mr-2" />
+          <span className="w-full text-slate-600/90 dark:text-slate-300 text-sm">{`on ${catchedOn}`}</span>
         </>
       )}
     </div>

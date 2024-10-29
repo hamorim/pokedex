@@ -1,5 +1,13 @@
 # Pokedex
 
+## Setting up
+
+Create a `.env` file in the root of the project with the following content:
+
+```
+NEXT_PUBLIC_URL=YOUR_DEPLOY_URL
+```   
+
 ## Getting Started
 
 First, run the development server:
