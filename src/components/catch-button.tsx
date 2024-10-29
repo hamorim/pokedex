@@ -33,7 +33,7 @@ export default function CatchButton({
   };
 
   return (
-    <div className={cn("w-full", className)} {...props}>
+    <div className={cn("", className)} {...props}>
       {isCatching && <Confetti mode="boom" particleCount={200} />}
       {!pokedexPokemon && <Button onClick={catchPokemon} className="px-8 py-6 text-lg bg-blue-500 hover:bg-blue-600 transition ease-in">Catch</Button>}
       {pokedexPokemon && (

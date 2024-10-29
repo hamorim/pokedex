@@ -1,13 +1,16 @@
-import dynamic from "next/dynamic";
-import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
-import { Metadata } from "next";
 import { getPokemon, getSpecie } from "@/services/pokeapi";
+import { Metadata } from "next";
+import dynamic from "next/dynamic";
+import Image from "next/image";
 
 const CatchButton = dynamic(() => import("@/components/catch-button"), {
+  ssr: false
+});
+const ReleaseButton = dynamic(() => import("@/components/release-button"), {
   ssr: false
 });
 
@@ -103,7 +106,10 @@ export default async function Page({ params }: Props) {
             ))}
           </div>
         </div>
-        <CatchButton pokemon={pokemon} className="col-span-2 md:col-span-1 md:mt-4" />
+        <div className="col-span-2 md:col-span-1 md:mt-4 flex flex-col">
+          <CatchButton pokemon={pokemon} className="mb-4" />
+          <ReleaseButton pokemon={pokemon} />
+        </div>
       </div>
     </Card>
   );

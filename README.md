@@ -31,9 +31,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - [x] Manage my Pokédex according to my taste and needs
 - [x] Alternate between different view modes
 - [x] Export all Pokémons from the Pokédex to CSV
+- [x] Release pokémon
 
 ## ToDo
 
 - [ ] Add notes to catched Pokémons
-- [ ] Release pokémon
 - [ ] Test coverage
