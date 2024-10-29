@@ -7,7 +7,7 @@ function encode(numbers: number[]) {
   }
   // Convert the buffer to a binary string
   const binaryString = String.fromCharCode.apply(null, buffer as unknown as number[]);
-  // Convert the buffer to a string using Base64 encodin
+  // Convert the buffer to a string using Base64 encoding
   return btoa(binaryString);
 }
 
@@ -24,4 +24,5 @@ function decode(encodedString: string) {
   return Array.from(numbers); // Convert Uint8Array back to regular array
 }
 
-export { encode, decode };
+export { decode, encode };
+
